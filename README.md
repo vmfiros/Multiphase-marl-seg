@@ -1,11 +1,18 @@
 # Liver Multi‑Phase Segmentation with 3D Swin U‑Net, Cross‑Phase Attention & MARL
 
-This repository accompanies the paper’s code release. It includes:
+It includes:
 - **Stage I**: 3D Swin U‑Net with **Cross‑Phase Attention Fusion (CPAF)** for initial tumor segmentation.
 - **Stage II**: **Multi‑Agent Reinforcement Learning (MARL)** refinement (Expansion/Contraction agents, PPO, topology‑aware reward).
 - **Stage III**: **Grad‑CAM++** explainability overlays.
 
-> ⚠️ This is a scaffold with runnable utilities and stubs so reviewers can navigate the project. Replace stubs with your implementation.
+
+# Liver Multi-Phase Segmentation with MARL Refinement
+
+![Architecture](docs/figure/Archi1.png)
+
+> Implementation of our proposed 3D Swin U-Net with Cross-Phase Attention Fusion, Multi-Agent RL refinement, and Grad-CAM++ explainability.
+
+
 
 ## Quickstart
 ```bash
@@ -42,8 +49,8 @@ See `docs/architecture.md` and folder comments for details.
 
 ---
 
-## Baselines (for journal comparison)
-We provide working baselines:
+## Baselines 
+
 
 - **UNet3D** (classic 3D U-Net) → `configs/model_unet3d.yaml`
 - **ResUNet3D** (3D residual U-Net) → `configs/model_resunet3d.yaml`
