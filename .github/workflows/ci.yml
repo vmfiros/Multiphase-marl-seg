@@ -28,15 +28,16 @@ jobs:
         run: |
           python - <<'PY'
           import torch
-          # import all key modules (ensures package integrity)
-          import src
-          from src.models.swin_unet_cpaf import SwinUNetCPAF  # import only (no forward)
+          # ---- baseline forward in eval mode (avoids BatchNorm training constraint) ----
           from src.models.baselines.unet3d import UNet3D
-
-          # run a tiny forward on the light baseline to prove tensor plumbing works
-          x = torch.randn(1,2,8,8,8)
-          m = UNet3D(in_channels=2, out_channels=1, base_ch=8, depth=3)
-          y,_ = m(x)
+          m = UNet3D(in_channels=2, out_channels=1, base_ch=8, depth=3).eval()
+          with torch.no_grad():
+              y,_ = m(torch.randn(1,2,8,8,8))
           assert y.shape == (1,1,8,8,8)
-          print("OK: baseline UNet3D forward", y.shape)
+          print("OK: UNet3D baseline forward", y.shape)
+
+          # ---- import heavy model only (no forward in CI to keep memory low) ----
+          from src.models.swin_unet_cpaf import SwinUNetCPAF
+          _ = SwinUNetCPAF
+          print("OK: imported Swin_UNet_CPAF")
           PY
