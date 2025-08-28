@@ -12,3 +12,4 @@ Implementation of a 3D Swin U-Net with Cross-Phase Attention Fusion (CPAF), foll
 ```bash
 python -m pip install -r requirements.txt
 
+python scripts/preprocess.py --config configs/dataset_scidb.yaml
