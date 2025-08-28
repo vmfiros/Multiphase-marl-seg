@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -22,6 +22,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run smoke test
+      - name: Smoke test (imports + forward pass shapes)
         run: |
-          python -c "import torch; print('Torch version:', torch.__version__)"
+          python - <<'PY'
+          import torch
+          from src.models.swin_unet_cpaf import SwinUNetCPAF
+          m = SwinUNetCPAF()
+          x = torch.randn(1,2,32,32,32)  # tiny 3D volume
+          p, aux = m(x)
+          assert p.shape == (1,1,32,32,32)
+          print('OK: swin_unet_cpaf forward', p.shape)
+
+          from src.models.basenlines_if_any import *  # ignore; just a placeholder line
+          from src.models.baselines.unet3d import UNet3D
+          b = UNet3D(in_channels=2, out_channels=1, base_ch=8, depth=3)
+          pb,_ = b(torch.randn(1,2,32,32,32))
+          assert pb.shape == (1,1,32,32,32)
+          print('OK: unet3d forward', pb.shape)
+          PY
