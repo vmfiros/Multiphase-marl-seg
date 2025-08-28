@@ -76,6 +76,9 @@ spacing_mm:    [1.0, 1.0, 1.0]
 hu_clip:       [-200, 300]
 normalize:     zscore
 
+model:
+  channels: [96, 192, 384]
+  use_decoder_swin: true
 
 
 
