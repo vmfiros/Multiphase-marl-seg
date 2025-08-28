@@ -24,16 +24,16 @@ jobs:
 
       - name: Smoke test (imports + forward pass shapes)
         run: |
+          export PYTHONPATH=.
           python - <<'PY'
           import torch
           from src.models.swin_unet_cpaf import SwinUNetCPAF
           m = SwinUNetCPAF()
-          x = torch.randn(1,2,32,32,32)  # tiny 3D volume
+          x = torch.randn(1,2,32,32,32)
           p, aux = m(x)
           assert p.shape == (1,1,32,32,32)
           print('OK: swin_unet_cpaf forward', p.shape)
 
-          from src.models.basenlines_if_any import *  # ignore; just a placeholder line
           from src.models.baselines.unet3d import UNet3D
           b = UNet3D(in_channels=2, out_channels=1, base_ch=8, depth=3)
           pb,_ = b(torch.randn(1,2,32,32,32))
