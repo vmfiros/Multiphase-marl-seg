@@ -1,4 +1,0 @@
-
-model:
-  channels: [96, 192, 384]
-  use_decoder_swin: true

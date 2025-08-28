@@ -1,4 +1,0 @@
-
-model:
-  base_channels: 32
-  depth: 4

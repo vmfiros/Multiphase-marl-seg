@@ -1,4 +1,0 @@
-target_layer: decoder.last_block  # human-friendly alias; map in code
-save_dir: overlays
-colormap: jet
-draw_contour: true
