@@ -1,0 +1,9 @@
+dataset_name: 3D-IRCADb1
+root_raw: data/raw/IRCAD
+root_interim: data/interim/IRCAD
+root_processed: data/processed/IRCAD
+spacing_mm: [1.0, 1.0, 1.0]
+hu_clip: [-200, 300]
+normalize: zscore
+single_phase_dup_to_dual: true
+patch_size: [128, 128, 128]
