@@ -1,0 +1,12 @@
+trainer:
+  epochs: 200
+  batch_size: 1
+  lr: 2e-4
+  amp: true
+  num_workers: 4
+  val_every: 1
+loss: dice
+augment:
+  flip: true
+  rotate: true
+  intensity_jitter: true

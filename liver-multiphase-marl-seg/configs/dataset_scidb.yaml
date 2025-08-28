@@ -1,0 +1,9 @@
+dataset_name: SCIDB
+root_raw: data/raw/SCIDB
+root_interim: data/interim/SCIDB
+root_processed: data/processed/SCIDB
+split: { train: 0.7, val: 0.15, test: 0.15 }
+spacing_mm: [1.0, 1.0, 1.0]
+hu_clip: [-200, 300]
+normalize: zscore
+patch_size: [128, 128, 128]

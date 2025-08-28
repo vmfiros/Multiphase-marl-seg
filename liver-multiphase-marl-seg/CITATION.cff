@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Liver Multi-Phase Segmentation with 3D Swin U-Net, CPAF, and MARL"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: "YourLastName"
+    given-names: "YourFirstName"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+license: Apache-2.0
+version: "1.0.0"
+repository-code: "https://github.com/your-user/liver-multiphase-marl-seg"
